@@ -5,7 +5,7 @@ app:
     - selenium
 
 selenium:
-  image: selenium/standalone-chrome
+  image: selenium/standalone-chrome-debug
   expose:
     - "4444"
   log_driver: "none"

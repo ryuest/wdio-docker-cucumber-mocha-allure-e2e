@@ -1,7 +1,7 @@
 exports.config = {
     // Specify Test Files
     specs: [
-        './tests/specs/**/*.js'
+        './tests/features/**/*.feature',
     ],
     // Patterns to exclude.
     exclude: [
@@ -52,22 +52,10 @@ exports.config = {
     services: ['docker'],
     //
     // Framework you want to run your specs with.
-    framework: 'mocha',
+    framework: 'cucumber',
     //
     // Test reporter for stdout.
     reporters: ['dot', 'spec', 'allure'],
-
-    allure: {
-        outputDir: './allure-results/',
-        disableWebdriverStepsReporting: false,
-        useCucumberStepReporter: false,
-    },
-
-
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 60000
-    },
 
     services: ['docker'],
     dockerLogs: './',
@@ -83,7 +71,23 @@ exports.config = {
         //run script to start VNC?
     },
     //
-
+    // If you are using Cucumber you need to specify the location of your step definitions.
+    cucumberOpts: {
+        require: ['./tests/features/**/*.js'], // <string[]> (file/dir) require files before executing features
+        backtrace: false, // <boolean> show full backtrace for errors
+        compiler: [], // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        dryRun: false, // <boolean> invoke formatters without executing steps
+        failFast: false, // <boolean> abort the run on first failure
+        format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        colors: true, // <boolean> disable colors in formatter output
+        snippets: true, // <boolean> hide step definition snippets for pending steps
+        source: true, // <boolean> hide source uris
+        profile: [], // <string[]> (name) specify the profile to use
+        strict: false, // <boolean> fail if there are any undefined or pending steps
+        tags: [], // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+        timeout: 20000, // <number> timeout for step definitions
+        ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
+    },
     // Output for jUnit
     reporterOptions: {
         junit: {
