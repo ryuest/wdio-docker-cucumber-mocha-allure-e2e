@@ -11,5 +11,7 @@ docker-compose up -d
 ```
 npm i (yarn -i)
 
+mkdir output
+
 npm test (yarn test)
 ```
