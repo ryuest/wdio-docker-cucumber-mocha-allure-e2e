@@ -4,6 +4,6 @@ npm-debug.log*
 node_modules/
 allure-report/
 allure-results/
-output/
+output/*
 
 
